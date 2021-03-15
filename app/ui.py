@@ -1,4 +1,4 @@
-from objectpack.ui import BaseEditWindow, make_combo_box
+from objectpack.ui import BaseEditWindow
 from m3_ext.ui import all_components as ext
 
 
