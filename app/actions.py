@@ -19,7 +19,12 @@ class GroupPack(ObjectPack):
 class PermissionPack(ObjectPack):
     model = Permission
     add_to_desktop = True
-    edit_window = add_window = objectpack.ui.ModelEditWindow.fabricate(model)
+
+    def __init__(self, content_type_pack=None):
+        self.edit_window = self.add_window = objectpack.ui.ModelEditWindow.fabricate(self.model, model_register={
+            'ContentType': content_type_pack or ContentTypePack()
+        })
+        super().__init__()
 
 class UserPack(ObjectPack):
     model = User
