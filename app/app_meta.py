@@ -17,10 +17,12 @@ def register_actions():
 	"""
 	Регистрация экшен-паков
 	"""
+	content_type_pack = ContentTypePack()
+	permission_pack = PermissionPack(content_type_pack=content_type_pack)
 	return controller.packs.extend([
-		ContentTypePack(),
+		content_type_pack,
 		GroupPack(),
-		PermissionPack(),
+		permission_pack,
 		UserPack(),
 	])
 
