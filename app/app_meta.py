@@ -14,15 +14,18 @@ def register_urlpatterns():
 
 
 def register_actions():
-	"""
+    """
 	Регистрация экшен-паков
 	"""
-	return controller.packs.extend([
-		ContentTypePack(),
-		GroupPack(),
-		PermissionPack(),
-		UserPack(),
-	])
+    content_type_pack = ContentTypePack()
+    permission_pack = PermissionPack(content_type_pack=content_type_pack)
+    return controller.packs.extend([
+        content_type_pack,
+        GroupPack(),
+        permission_pack,
+        UserPack(),
+    ])
+
 
 def register_desktop_menu():
 	"""
